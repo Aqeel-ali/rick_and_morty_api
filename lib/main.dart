@@ -10,8 +10,12 @@ import 'package:dio/dio.dart';
 void main() {
   Get.lazyPut<Dio>(() => Dio());
   Get.lazyPut<ApiClient>(() => ApiClient(Get.find<Dio>()));
-  Get.lazyPut<CharactorRepository>(() => CharactorRepositoryImp(apiClient: Get.find<ApiClient>()));
-  Get.lazyPut<CharactersController>(() => CharactersController(Get.find<CharactorRepository>()));
+  Get.lazyPut<CharactorRepository>(
+    () => CharactorRepositoryImp(apiClient: Get.find<ApiClient>()),
+  );
+  Get.lazyPut<CharactersController>(
+    () => CharactersController(Get.find<CharactorRepository>()),
+  );
 
   runApp(const MyApp());
 }
@@ -19,7 +23,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

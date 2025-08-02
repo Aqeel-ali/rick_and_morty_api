@@ -17,8 +17,12 @@ class CharacterCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
         child: Card(
-          elevation: 4,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          color: Colors.white,
+          elevation: 2,
+
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
           child: Row(
             children: [
               Hero(
@@ -41,6 +45,8 @@ class CharacterCard extends StatelessWidget {
                   children: [
                     Text(
                       character.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: MediaQuery.of(context).size.width * 0.05,
                         fontWeight: FontWeight.bold,
@@ -54,8 +60,8 @@ class CharacterCard extends StatelessWidget {
                           color: character.status == 'Alive'
                               ? Colors.green
                               : character.status == 'Dead'
-                                  ? Colors.red
-                                  : Colors.grey,
+                              ? Colors.red
+                              : Colors.grey,
                           size: MediaQuery.of(context).size.width * 0.03,
                         ),
                         const SizedBox(width: 8),
