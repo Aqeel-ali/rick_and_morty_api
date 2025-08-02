@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rick_and_morty_api/constants/my_colors.dart';
 import 'package:rick_and_morty_api/data/model/charactor_model.dart';
 import 'package:rick_and_morty_api/ui/character/screens/character_detail_screen.dart';
 
@@ -17,9 +18,8 @@ class CharacterCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
         child: Card(
-          color: Colors.white,
+          color: Get.isDarkMode ? MyColors.surfaceDark : MyColors.surfaceLight,
           elevation: 2,
-
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
