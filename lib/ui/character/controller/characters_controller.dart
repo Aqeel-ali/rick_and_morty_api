@@ -25,11 +25,14 @@ class CharactersController extends GetxController {
     errorMessage.value = '';
     _pageNumber = 1;
     try {
-      final newCharacters = await charactersRepository.getAllcharacters(
+      final response = await charactersRepository.getAllcharacters(
         _pageNumber,
       );
+      final List<CharacterModel> newCharacters = response['characters'];
+      final Map<String, dynamic> info = response['info'];
+
       characters.assignAll(newCharacters);
-      hasReachedMax.value = newCharacters.isEmpty;
+      hasReachedMax.value = info['next'] == null;
     } catch (e) {
       errorMessage.value = e.toString();
     } finally {
@@ -44,11 +47,13 @@ class CharactersController extends GetxController {
     errorMessage.value = '';
     try {
       _pageNumber++;
-      final newCharacters = await charactersRepository.getAllcharacters(
+      final response = await charactersRepository.getAllcharacters(
         _pageNumber,
       );
+      final List<CharacterModel> newCharacters = response['characters'];
+      final Map<String, dynamic> info = response['info'];
 
-      if (newCharacters.isEmpty) {
+      if (newCharacters.isEmpty || info['next'] == null) {
         hasReachedMax.value = true;
       } else {
         characters.addAll(newCharacters);

@@ -38,12 +38,10 @@ class _CharacterScreenState extends State<CharacterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("الشخصيات")),
+      appBar: AppBar(title: const Text("Characters")),
       body: Obx(() {
         if (controller.isLoading.value && controller.characters.isEmpty) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const Center(child: CircularProgressIndicator());
         } else if (controller.errorMessage.isNotEmpty) {
           return Center(child: Text(controller.errorMessage.value));
         } else {
