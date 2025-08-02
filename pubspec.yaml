@@ -39,7 +39,7 @@ dependencies:
   dio: ^5.8.0+1
   
   #state management
-  get: ^4.6.6
+  get: ^4.7.2
 
   #icons
   enefty_icons: ^1.0.8
